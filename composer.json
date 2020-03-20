@@ -1,14 +1,14 @@
 {
-    "name": "api-platform/core",
-    "description": "Build a fully-featured hypermedia or GraphQL API in minutes",
+    "name": "all-stars_youth_sports_club_api-platform/core",
+    "description": "A fully-featured hypermedia API and a GraphQL API",
     "type": "library",
     "keywords": ["REST", "GraphQL", "API", "JSON-LD", "Hydra", "JSONAPI", "OpenAPI", "HAL", "Swagger"],
     "homepage": "https://api-platform.com",
     "license": "MIT",
     "authors": [
         {
-            "name": "Kévin Dunglas",
-            "email": "dunglas@gmail.com",
+            "name": "Derrick Faulkens",
+            "email": "allstarsyouthsportsclub@gmail.com",
             "homepage": "https://dunglas.fr"
         }
     ],
