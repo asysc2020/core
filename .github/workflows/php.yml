@@ -1,0 +1,111 @@
+name: PHP Composer
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Validate composer.json and composer.lock
+      run: composer validate
+
+    - name: Install dependencies
+      run: composer install --prefer-dist --no-progress --no-suggest
+
+    # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
+    - name: shellcheck
+      uses: ludeeus/action-shellcheck@0.1.0
+    - name: calibreapp/github-actions
+      uses: calibreapp/github-actions@1.0.2
+    - name: Pocket_Lint
+      uses: PatMyron/pocket-lint@0.1
+    - name: Python style check
+      uses: bulv1ne/python-style-check@v0.3
+    - name: BrowserStack Local Container
+      uses: ianwalter/bsl@v2.0.1
+    - name: Hello Action
+      uses: wxdlong/hello-action@v7
+      with:
+        # who to greet
+        who-to-greet: # default is wxdlong
+    - name: FRC Build & Test
+      uses: Ewpratten/FRC-actions@v1.1.1
+      with:
+        # What should be run? One of: ["all", "build", "unit_test"]
+        build_mode: # optional, default is all
+    - name: Setup Shopware Action
+      uses: FriendsOfShopware/action-shopware@0.0.1
+      with:
+        # PHP version to be installed.
+        php-version: # default is 7.2
+        # Shopware version to be installed.
+        shopware-version: # default is 5.6
+    - name: command testing action
+      uses: MeilCli/test-command-action@v1
+      with:
+        # execute command
+        command: 
+     # expect command output, regex value
+     expect_regex: # optional
+      # expect command output, include value
+      expect_contain: # optional
+      - name: Lint Ren'Py Project
+  uses: ProjectAliceDev/renpy-lint-action@v1.1.0
+  with:
+    # The version of the Ren'Py SDK to use
+    sdk-version: # default is 7.3.2
+    # The path to the directory where the project exists
+    project-dir: # default is .
+    - name: Setup BATS testing framework
+  uses: mig4/setup-bats@v1.0.1
+  with:
+    # The BATS version to setup. Example: 1.0.0 or master, default: 1.1.0
+    bats-version: # optional, default is 1.1.0
+    - name: Setup Emscripten
+  uses: lovasoa/setup-emscripten@v1
+  with:
+    # Version of emscripten to install
+    emscripten-version: # optional, default is latest
+    - name: Start MongoDB As Docker
+  uses: wbari/start-mongoDB@v0.2
+  with:
+    # MongoDB Version
+    mongoDBVersion: # default is 3.6
+    - name: tnp-frontend-testing
+  uses: TheNeonProject/tnp-frontend-testing-action@0.1
+    - name: Web Performance Audits with Lighthouse
+  uses: justinribeiro/lighthouse-action@v1.1.0
+  with:
+    # Page URL
+    url: # optional
+    # WPT connection speed profile: twog, threegslow, threeg, threegfast, fourg, lte
+    wptConnectionSpeed: # optional
+    # File path to custom lighthouse configuration JavaScript file. See https://github.com/GoogleChrome/lighthouse/blob/master/docs/configuration.md
+    lighthouseConfiguration: # optional
+    # File path to custom budget.json file; will fail PRs based on budget result. See https://developers.google.com/web/tools/lighthouse/audits/budgets
+    lighthouseBudget: # optional
+    # This should be the default secrets.GITHUB_TOKEN so that we can send comments to your PRs.
+    secret: # optional
+    - name: PLTcloud Action
+  uses: bcdevices/pltcloud-action@v1.0.1
+   - name: Beagle Security Test
+  uses: beaglesecurity/beagle-github-action@1.0.5
+   - name: HTMLProofer
+  uses: chabad360/htmlproofer@v1.1
+  with:
+    # The directory to scan
+    directory: 
+    # HTMLProofer options
+    arguments: # optional    
+   # Docs: https://getcomposer.org/doc/articles/scripts.md
+
+    # - name: Run test suite
+    #   run: composer run-script test
